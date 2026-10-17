@@ -1,0 +1,135 @@
+<mxfile host="65bd71144e">
+    <diagram id="erd-basic" name="ERD Basic">
+        <mxGraphModel dx="891" dy="817" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3600" pageHeight="2100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="nNguoiDung" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;align=left;spacing=8" value="&lt;b&gt;NguoiDung&lt;/b&gt;&lt;hr&gt;PK &lt;u&gt;MaND&lt;/u&gt;&lt;br&gt;HoTen&lt;br&gt;UQ SDT&lt;br&gt;UQ Email&lt;br&gt;LoaiND {Khách hàng, Tài xế, Chủ nhà hàng}" vertex="1">
+                    <mxGeometry height="150" width="280" x="440" y="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="nKhachHang" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;align=left;spacing=8" value="&lt;b&gt;KhachHang&lt;/b&gt;&lt;hr&gt;PK, FK &lt;u&gt;MaND&lt;/u&gt;&lt;br&gt;{DiaChiGiaoHang(SoNha, Duong, Phuong, Quan, ThanhPho)}" vertex="1">
+                    <mxGeometry height="120" width="280" x="80" y="250" as="geometry"/>
+                </mxCell>
+                <mxCell id="nTaiXe" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;align=left;spacing=8" value="&lt;b&gt;TaiXe&lt;/b&gt;&lt;hr&gt;PK, FK &lt;u&gt;MaND&lt;/u&gt;&lt;br&gt;UQ BienSoXe&lt;br&gt;TrangThaiHoatDong {Rảnh, Đang giao}" vertex="1">
+                    <mxGeometry height="120" width="280" x="440" y="250" as="geometry"/>
+                </mxCell>
+                <mxCell id="nChuNhaHang" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;align=left;spacing=8" value="&lt;b&gt;ChuNhaHang&lt;/b&gt;&lt;hr&gt;PK, FK &lt;u&gt;MaND&lt;/u&gt;&lt;br&gt;&lt;i&gt;(kế thừa — T3)&lt;/i&gt;" vertex="1">
+                    <mxGeometry height="100" width="240" x="800" y="250" as="geometry"/>
+                </mxCell>
+                <mxCell id="nNhaHang" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;spacing=8" value="&lt;b&gt;NhaHang&lt;/b&gt;&lt;hr&gt;PK &lt;u&gt;MaNH&lt;/u&gt;&lt;br&gt;FK MaChu → ChuNhaHang.MaND&lt;br&gt;TenNH&lt;br&gt;DiaChi(SoNha, Duong, Phuong, Quan, ThanhPho)&lt;br&gt;{GioMoCua(ThuTrongTuan, GioMo, GioDong)}&lt;br&gt;TrangThaiNhanDon {Đang nhận đơn, Tạm ngừng nhận đơn}" vertex="1">
+                    <mxGeometry height="200" width="340" x="1100" y="230" as="geometry"/>
+                </mxCell>
+                <mxCell id="nDanhMuc" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;spacing=8" value="&lt;b&gt;DanhMuc&lt;/b&gt;&lt;hr&gt;PK &lt;u&gt;MaDM&lt;/u&gt;&lt;br&gt;FK MaNH&lt;br&gt;FK MaDMCha → DanhMuc.MaDM&lt;br&gt;TenDM" vertex="1">
+                    <mxGeometry height="140" width="280" x="1500" y="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="nMonAn" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;spacing=8" value="&lt;b&gt;MonAn&lt;/b&gt;&lt;hr&gt;PK &lt;u&gt;MaMon&lt;/u&gt;&lt;br&gt;FK MaDM&lt;br&gt;TenMon&lt;br&gt;Gia (Gia &amp;gt; 0)&lt;br&gt;TrangThai {Còn món, Hết món}" vertex="1">
+                    <mxGeometry height="145" width="280" x="1500" y="500" as="geometry"/>
+                </mxCell>
+                <mxCell id="nDonHang" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;align=left;spacing=8" value="&lt;b&gt;DonHang&lt;/b&gt;&lt;hr&gt;PK &lt;u&gt;MaDH&lt;/u&gt;&lt;br&gt;FK MaKH → KhachHang.MaND&lt;br&gt;FK MaNH → NhaHang.MaNH&lt;br&gt;FK MaTX → TaiXe.MaND (nullable)&lt;br&gt;FK MaKM → KhuyenMai.MaKM (nullable)&lt;br&gt;ThoiGianTao&lt;br&gt;TrangThai {Chờ nhận đơn, Đang chuẩn bị, Đã chuẩn bị xong, Đã phân công tài xế, Đang giao, Hoàn thành, Đã hủy}&lt;br&gt;DiaChiGiao(SoNha, Duong, Phuong, Quan, ThanhPho)&lt;br&gt;PhiGiaoHang (≥ 0)&lt;br&gt;TongTienMon (dẫn xuất)&lt;br&gt;GiaTriGiamThucTe (dẫn xuất)&lt;br&gt;TongTien (dẫn xuất)" vertex="1">
+                    <mxGeometry height="300" width="500" x="720" y="590" as="geometry"/>
+                </mxCell>
+                <mxCell id="nChiTiet" parent="1" style="rounded=0;double=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;align=left;spacing=8;perimeterSpacing=0;" value="&lt;b&gt;ChiTietDonHang (thực thể yếu)&lt;/b&gt;&lt;hr&gt;PK, FK &lt;u&gt;MaDH&lt;/u&gt;&lt;br&gt;PK &lt;u&gt;STT&lt;/u&gt; (khóa riêng phần)&lt;br&gt;FK MaMon → MonAn.MaMon&lt;br&gt;UQ (MaDH, MaMon)&lt;br&gt;SoLuong (số nguyên &amp;gt; 0)&lt;br&gt;DonGia (ảnh chụp MonAn.Gia lúc tạo đơn)" vertex="1">
+                    <mxGeometry height="190" width="370" x="1390" y="730" as="geometry"/>
+                </mxCell>
+                <mxCell id="nKhuyenMai" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;align=left;spacing=8" value="&lt;b&gt;KhuyenMai&lt;/b&gt;&lt;hr&gt;PK &lt;u&gt;MaKM&lt;/u&gt;&lt;br&gt;UQ MaVoucher&lt;br&gt;LoaiGiam {Phần trăm, Số tiền}&lt;br&gt;GiaTriGiam (&amp;gt; 0; phần trăm ≤ 100)&lt;br&gt;DieuKienApDung (≥ 0)&lt;br&gt;GiamToiDa (≥ 0)&lt;br&gt;NgayBatDau&lt;br&gt;NgayKetThuc (≥ NgayBatDau)" vertex="1">
+                    <mxGeometry height="200" width="330" x="280" y="640" as="geometry"/>
+                </mxCell>
+                <mxCell id="nThanhToan" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;align=left;spacing=8" value="&lt;b&gt;ThanhToan&lt;/b&gt;&lt;hr&gt;PK &lt;u&gt;MaTT&lt;/u&gt;&lt;br&gt;FK, UQ MaDH (NOT NULL)&lt;br&gt;PhuongThuc {Thẻ tín dụng, Ví điện tử}&lt;br&gt;TrangThai {Chờ thanh toán, Thành công, Thất bại}&lt;br&gt;SoTien&lt;br&gt;ThoiGianCapNhat" vertex="1">
+                    <mxGeometry height="175" width="350" x="900" y="990" as="geometry"/>
+                </mxCell>
+                <mxCell id="nDanhGia" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;align=left;spacing=8" value="&lt;b&gt;DanhGia&lt;/b&gt;&lt;hr&gt;PK &lt;u&gt;MaDG&lt;/u&gt;&lt;br&gt;FK MaDH&lt;br&gt;LoaiDG {Nhà hàng, Tài xế}&lt;br&gt;SoSao (số nguyên 1..5)&lt;br&gt;BinhLuan (optional)&lt;br&gt;ThoiGian&lt;br&gt;&lt;i&gt;(supertype — Disjoint, Total)&lt;/i&gt;" vertex="1">
+                    <mxGeometry height="180" width="320" x="480" y="1040" as="geometry"/>
+                </mxCell>
+                <mxCell id="nDanhGiaNH" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;align=left;spacing=8" value="&lt;b&gt;DanhGiaNhaHang&lt;/b&gt;&lt;hr&gt;PK, FK &lt;u&gt;MaDG&lt;/u&gt;&lt;br&gt;FK MaNH&lt;br&gt;&lt;i&gt;(subtype — T3)&lt;/i&gt;" vertex="1">
+                    <mxGeometry height="115" width="300" x="900" y="1340" as="geometry"/>
+                </mxCell>
+                <mxCell id="nDanhGiaTX" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;align=left;spacing=8" value="&lt;b&gt;DanhGiaTaiXe&lt;/b&gt;&lt;hr&gt;PK, FK &lt;u&gt;MaDG&lt;/u&gt;&lt;br&gt;FK MaTX → TaiXe.MaND&lt;br&gt;&lt;i&gt;(subtype — T3)&lt;/i&gt;" vertex="1">
+                    <mxGeometry height="125" width="300" x="120" y="1340" as="geometry"/>
+                </mxCell>
+                <mxCell id="e1" edge="1" parent="1" source="nChuNhaHang" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=0;startArrow=ERmandOne;endArrow=ERoneToMany;startFill=0;endFill=0;fontSize=11;labelBackgroundColor=#ffffff;" target="nNhaHang" value="sở hữu">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e2" edge="1" parent="1" source="nNhaHang" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=ERmandOne;endArrow=ERoneToMany;startFill=0;endFill=0;fontSize=11;labelBackgroundColor=#ffffff;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" target="nDanhMuc" value="có">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e3" edge="1" parent="1" source="nDanhMuc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=ERzeroToMany;endArrow=ERzeroToOne;startFill=0;endFill=0;fontSize=11;labelBackgroundColor=#ffffff;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="nDanhMuc" value="DanhMucCha có DanhMucCon">
+                    <mxGeometry relative="1" x="0.22" y="30" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e4" edge="1" parent="1" source="nDanhMuc" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=ERmandOne;endArrow=ERzeroToMany;startFill=0;endFill=0;fontSize=11;labelBackgroundColor=#ffffff;exitX=1.004;exitY=0.778;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.003;entryY=0.72;entryDx=0;entryDy=0;entryPerimeter=0;" target="nMonAn" value="chứa">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e5" edge="1" parent="1" source="nKhachHang" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=ERmandOne;endArrow=ERzeroToMany;startFill=0;endFill=0;fontSize=11;labelBackgroundColor=#ffffff;" target="nDonHang" value="tạo">
+                    <mxGeometry relative="1" x="0.0006" as="geometry"/>
+                </mxCell>
+                <mxCell id="e6" edge="1" parent="1" source="nNhaHang" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=ERmandOne;endArrow=ERzeroToMany;startFill=0;endFill=0;fontSize=11;labelBackgroundColor=#ffffff;entryX=0.25;entryY=0;entryDx=0;entryDy=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" target="nDonHang" value="nhận">
+                    <mxGeometry relative="1" x="0.1294" as="geometry"/>
+                </mxCell>
+                <mxCell id="e7" edge="1" parent="1" source="nDonHang" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=0;strokeWidth=1;startArrow=ERmandOne;endArrow=ERoneToMany;startFill=0;endFill=0;fontSize=11;labelBackgroundColor=#ffffff;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="nChiTiet" value="gồm">
+                    <mxGeometry relative="1" x="0.0119" as="geometry"/>
+                </mxCell>
+                <mxCell id="e8" edge="1" parent="1" source="nMonAn" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=ERmandOne;endArrow=ERzeroToMany;startFill=0;endFill=0;fontSize=11;labelBackgroundColor=#ffffff;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="nChiTiet" value="được chọn trong">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e9" edge="1" parent="1" source="nTaiXe" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startFill=0;endFill=0;fontSize=11;labelBackgroundColor=#ffffff;entryX=0;entryY=0.75;entryDx=0;entryDy=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" target="nDonHang" value="giao">
+                    <mxGeometry relative="1" x="-0.0312" as="geometry"/>
+                </mxCell>
+                <mxCell id="e10" edge="1" parent="1" source="nKhuyenMai" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=0;startArrow=ERzeroToOne;endArrow=ERzeroToMany;startFill=0;endFill=0;fontSize=11;labelBackgroundColor=#ffffff;" target="nDonHang" value="được áp dụng cho">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e11" edge="1" parent="1" source="nDonHang" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=ERmandOne;endArrow=ERmandOne;startFill=0;endFill=0;fontSize=11;labelBackgroundColor=#ffffff;exitX=1;exitY=0.75;exitDx=0;exitDy=0;dashed=0;" target="nThanhToan" value="có hồ sơ thanh toán">
+                    <mxGeometry relative="1" x="0.0009" as="geometry"/>
+                </mxCell>
+                <mxCell id="e12" edge="1" parent="1" source="nDonHang" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=ERmandOne;endArrow=ERzeroToMany;startFill=0;endFill=0;fontSize=11;labelBackgroundColor=#ffffff;exitX=-0.01;exitY=0.843;exitDx=0;exitDy=0;exitPerimeter=0;" target="nDanhGia" value="có">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e13" edge="1" parent="1" source="nNhaHang" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=ERmandOne;endArrow=ERzeroToMany;startFill=0;endFill=0;fontSize=11;labelBackgroundColor=#ffffff;" target="nDanhGiaNH" value="nhận đánh giá">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e14" edge="1" parent="1" source="nTaiXe" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;startArrow=ERmandOne;endArrow=ERzeroToMany;startFill=0;endFill=0;fontSize=11;labelBackgroundColor=#ffffff;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" target="nDanhGiaTX" value="nhận đánh giá">
+                    <mxGeometry relative="1" x="0.0142" as="geometry"/>
+                </mxCell>
+                <mxCell id="isaUserKH" edge="1" parent="1" source="nKhachHang" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=0;endArrow=block;endFill=0;fontSize=10;labelBackgroundColor=#ffffff;" target="nNguoiDung" value="IS-A (D,T)">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="isaUserTX" edge="1" parent="1" source="nTaiXe" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=0;endArrow=block;endFill=0;fontSize=10;labelBackgroundColor=#ffffff;" target="nNguoiDung" value="IS-A (D,T)">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="isaUserCNH" edge="1" parent="1" source="nChuNhaHang" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=0;endArrow=block;endFill=0;fontSize=10;labelBackgroundColor=#ffffff;" target="nNguoiDung" value="IS-A (D,T)">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="isaReviewNH" edge="1" parent="1" source="nDanhGiaNH" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=0;endArrow=block;endFill=0;fontSize=10;labelBackgroundColor=#ffffff;" target="nDanhGia" value="IS-A (D,T)">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="isaReviewTX" edge="1" parent="1" source="nDanhGiaTX" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=0;endArrow=block;endFill=0;fontSize=10;labelBackgroundColor=#ffffff;" target="nDanhGia" value="IS-A (D,T)">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="noteLegend" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;align=left;verticalAlign=top;spacing=10;" value="&lt;b&gt;CHÚ GIẢI&lt;/b&gt;&lt;br&gt;UQ: duy nhất; nullable/optional: cho phép rỗng;&lt;br&gt;(dẫn xuất): giá trị được tính từ dữ liệu khác;&lt;br&gt;{...}: thuộc tính đa trị; (...): thuộc tính phức hợp;&lt;br&gt;D,T: specialization Disjoint, Total.&lt;br&gt;&lt;br&gt;Các rule trạng thái, tính toán và liên-thực-thể được ghi ở các note bên phải; khi chuyển sang lược đồ quan hệ phải hiện thực bằng CHECK, UNIQUE, FK, trigger/procedure hoặc transaction." vertex="1">
+                    <mxGeometry height="190" width="720" x="1900" y="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="notePay12_23" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;align=left;verticalAlign=top;spacing=10;" value="&lt;b&gt;BR-PAY-12 → BR-PAY-23 — Khuyến mãi&lt;/b&gt;&lt;br&gt;PAY-12: MaKM rỗng ⇒ GiaTriGiamThucTe = 0.&lt;br&gt;PAY-13: MaVoucher UNIQUE.&lt;br&gt;PAY-14: LoaiGiam ∈ {Phần trăm, Số tiền}.&lt;br&gt;PAY-15: NgayBatDau ≤ DonHang.ThoiGianTao ≤ NgayKetThuc.&lt;br&gt;PAY-16: NgayBatDau ≤ NgayKetThuc.&lt;br&gt;PAY-17: TongTienMon ≥ DieuKienApDung.&lt;br&gt;PAY-18: loại Phần trăm ⇒ giảm = min(TongTienMon × GiaTriGiam/100, GiamToiDa, TongTienMon).&lt;br&gt;PAY-19: loại Số tiền ⇒ giảm = min(GiaTriGiam, TongTienMon).&lt;br&gt;PAY-20..23: GiaTriGiam &amp;gt; 0; phần trăm ≤ 100; DieuKienApDung ≥ 0; GiamToiDa ≥ 0." vertex="1">
+                    <mxGeometry height="330" width="720" x="1900" y="230" as="geometry"/>
+                </mxCell>
+                <mxCell id="notePay24_26" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;align=left;verticalAlign=top;spacing=10;" value="&lt;b&gt;BR-PAY-24 → BR-PAY-26 — Vòng đời thanh toán&lt;/b&gt;&lt;br&gt;PAY-24: chỉ Thất bại được thử lại; thử lại chuyển về Chờ thanh toán và cập nhật cùng hồ sơ.&lt;br&gt;PAY-25: cập nhật ThoiGianCapNhat khi tạo, thử lại hoặc nhận kết quả cổng thanh toán.&lt;br&gt;PAY-26: Thành công là trạng thái kết thúc, không được thử lại/chuyển trạng thái." vertex="1">
+                    <mxGeometry height="170" width="720" x="1900" y="580" as="geometry"/>
+                </mxCell>
+                <mxCell id="noteRev" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;align=left;verticalAlign=top;spacing=10;" value="&lt;b&gt;BR-REV-01 → BR-REV-12 — Đánh giá&lt;/b&gt;&lt;br&gt;REV-01: DonHang 1 — 0..N DanhGia; mỗi DanhGia thuộc đúng 1 DonHang.&lt;br&gt;REV-02: DanhGia chuyên biệt Disjoint, Total thành DanhGiaNhaHang hoặc DanhGiaTaiXe.&lt;br&gt;REV-03..04: mỗi subtype tham chiếu đúng 1 đối tượng; mỗi đối tượng có 0..N đánh giá.&lt;br&gt;REV-05: DanhGiaNhaHang.MaNH = DonHang.MaNH.&lt;br&gt;REV-06: DanhGiaTaiXe.MaTX = DonHang.MaTX.&lt;br&gt;REV-07: chỉ đánh giá DonHang có trạng thái Hoàn thành.&lt;br&gt;REV-08: người đánh giá phải là DonHang.MaKH.&lt;br&gt;REV-09..10: mỗi đơn tối đa 1 đánh giá nhà hàng và 1 đánh giá tài xế (UNIQUE theo MaDH trong từng subtype; cần trigger/assertion nếu không mang MaDH xuống subtype).&lt;br&gt;REV-11: SoSao là số nguyên 1..5. REV-12: BinhLuan optional." vertex="1">
+                    <mxGeometry height="330" width="720" x="1900" y="770" as="geometry"/>
+                </mxCell>
+                <mxCell id="noteUsr" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacing=10;" value="&lt;b&gt;BR-USR-01 → BR-USR-19 — Người dùng, nhà hàng, thực đơn&lt;/b&gt;&lt;br&gt;USR-01..02: NguoiDung → {KhachHang, TaiXe, ChuNhaHang} là Disjoint, Total; LoaiND là discriminator.&lt;br&gt;USR-03..04: SDT và Email UNIQUE.&lt;br&gt;USR-05..06: KhachHang có ít nhất 1 DiaChiGiaoHang đa trị/phức hợp gồm 5 thành phần.&lt;br&gt;USR-07: ChuNhaHang 1..N — 1 NhaHang, bắt buộc hai phía.&lt;br&gt;USR-08: NhaHang.DiaChi là thuộc tính phức hợp gồm 5 thành phần.&lt;br&gt;USR-09,18,19: NhaHang có ít nhất 1 GioMoCua đa trị/phức hợp (ThuTrongTuan, GioMo, GioDong), GioMo &amp;lt; GioDong.&lt;br&gt;USR-10: BienSoXe UNIQUE.&lt;br&gt;USR-11: NhaHang 1..N — 1 DanhMuc, bắt buộc hai phía.&lt;br&gt;USR-12: DanhMuc cha 0..N — 0..1 DanhMuc con.&lt;br&gt;USR-13: danh mục con và cha phải cùng MaNH.&lt;br&gt;USR-14: DanhMuc 1 — 0..N MonAn; MonAn bắt buộc thuộc 1 DanhMuc.&lt;br&gt;USR-15: Gia &amp;gt; 0. USR-16: TrangThai ∈ {Còn món, Hết món}. USR-17: TrangThaiNhanDon ∈ {Đang nhận đơn, Tạm ngừng nhận đơn}." vertex="1">
+                    <mxGeometry height="410" width="720" x="1900" y="1120" as="geometry"/>
+                </mxCell>
+                <mxCell id="noteOrd" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;align=left;verticalAlign=top;spacing=10;" value="&lt;b&gt;BR-ORD-01 → BR-ORD-19 — Đơn hàng&lt;/b&gt;&lt;br&gt;ORD-01..05: các quan hệ KhachHang–DonHang, NhaHang–DonHang, DonHang–ChiTietDonHang và MonAn–ChiTietDonHang theo cardinality trên hình; ChiTietDonHang là thực thể yếu, PK (MaDH, STT).&lt;br&gt;ORD-06: món của chi tiết phải thuộc nhà hàng của đơn.&lt;br&gt;ORD-07: UNIQUE (MaDH, MaMon); cùng món gọi thêm thì tăng SoLuong, không tạo dòng mới.&lt;br&gt;ORD-08: SoLuong là số nguyên &amp;gt; 0.&lt;br&gt;ORD-09..10: DonGia sao chép từ MonAn.Gia khi tạo đơn và không cập nhật theo giá mới.&lt;br&gt;ORD-11: chỉ thêm món có TrangThai = Còn món.&lt;br&gt;ORD-12: chỉ tạo đơn khi NhaHang đang nhận đơn.&lt;br&gt;ORD-13..17: chuỗi Chờ nhận đơn → Đang chuẩn bị → Đã chuẩn bị xong → Đã phân công tài xế → Đang giao → Hoàn thành; nhà hàng thực hiện hai bước chuẩn bị.&lt;br&gt;ORD-18: chỉ Chờ nhận đơn được hủy. ORD-19: Hoàn thành/Đã hủy là trạng thái kết thúc." vertex="1">
+                    <mxGeometry height="370" width="760" x="2650" y="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="noteDel" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;align=left;verticalAlign=top;spacing=10;" value="&lt;b&gt;BR-DEL-01 → BR-DEL-12 — Giao hàng và địa chỉ&lt;/b&gt;&lt;br&gt;DEL-01: DonHang có 0..1 TaiXe; TaiXe giao 0..N DonHang theo thời gian.&lt;br&gt;DEL-02: TrangThaiHoatDong ∈ {Rảnh, Đang giao}.&lt;br&gt;DEL-03..05: chỉ tài xế Rảnh được nhận đơn; khi phân công, DonHang gán MaTX và tài xế chuyển Đang giao.&lt;br&gt;DEL-06..08: chỉ tài xế đã lấy món/được phân công mới chuyển trạng thái giao; xác nhận giao xong mới Hoàn thành.&lt;br&gt;DEL-09: hoàn thành đơn ⇒ tài xế trở lại Rảnh.&lt;br&gt;DEL-10..12: DiaChiGiao được chọn từ địa chỉ khách và sao chép vào đơn lúc tạo; thay đổi địa chỉ khách không làm đổi đơn cũ." vertex="1">
+                    <mxGeometry height="280" width="760" x="2650" y="410" as="geometry"/>
+                </mxCell>
+                <mxCell id="notePay01_11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;align=left;verticalAlign=top;spacing=10;" value="&lt;b&gt;BR-PAY-01 → BR-PAY-11 — Thanh toán cơ bản&lt;/b&gt;&lt;br&gt;PAY-01: DonHang 1 — 1 ThanhToan bắt buộc hai phía; ThanhToan.MaDH UNIQUE, NOT NULL.&lt;br&gt;PAY-02..05: miền PhuongThuc/TrangThai; khởi đầu Chờ thanh toán, nhận kết quả cổng mới chuyển Thành công hoặc Thất bại.&lt;br&gt;PAY-06: ThanhToan.SoTien = DonHang.TongTien.&lt;br&gt;PAY-07: TongTienMon = Σ(SoLuong × DonGia).&lt;br&gt;PAY-08: TongTien = TongTienMon + PhiGiaoHang − GiaTriGiamThucTe.&lt;br&gt;PAY-09: PhiGiaoHang ≥ 0.&lt;br&gt;PAY-10: 0 ≤ GiaTriGiamThucTe ≤ TongTienMon.&lt;br&gt;PAY-11: DonHang dùng 0..1 KhuyenMai; KhuyenMai được dùng cho 0..N DonHang." vertex="1">
+                    <mxGeometry height="270" width="760" x="2650" y="710" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
