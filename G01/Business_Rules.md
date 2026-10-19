@@ -1,6 +1,5 @@
 # BUSINESS RULES
 
-`[GĐ]` đánh dấu giả định hoặc quyết định mô hình do nhóm chốt khi đề bài không quy định chi tiết. Bộ quy tắc chỉ sử dụng đúng 14 thực thể: `NguoiDung`, `KhachHang`, `TaiXe`, `ChuNhaHang`, `NhaHang`, `DanhMuc`, `MonAn`, `DonHang`, `ChiTietDonHang`, `KhuyenMai`, `ThanhToan`, `DanhGia`, `DanhGiaNhaHang`, `DanhGiaTaiXe`.
 
 | Mã | Phát biểu quy tắc | Loại | Thực thể liên quan | Ánh xạ vào mô hình | Nguồn |
 |---|---|---|---|---|---|
